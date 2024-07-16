@@ -1,0 +1,1 @@
+Praticando exercício de algoritmo.
