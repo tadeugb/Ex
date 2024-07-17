@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Security.AccessControl;
 using Newtonsoft.Json; //dotnet add package Newtonsoft.Json --version 13.0.3
 
 namespace Ex
@@ -17,19 +18,15 @@ namespace Ex
         {
             int opcao;
 
-            // Console.WriteLine("Ex 1");
-            // Console.WriteLine("Ex 2");
-            // Console.WriteLine("Ex 3");
-            // Console.WriteLine("Ex 4");
-            // Console.WriteLine("Ex 5");
-            // Console.WriteLine("Ex 6");
-            // Console.WriteLine("Ex 7");
-            // Console.WriteLine("Ex 8");
+            Console.WriteLine("Digute um numero 1 ate 100");
+            Console.WriteLine("Para sair digite 0");
 
             opcao = int.Parse(Console.ReadLine());
 
             switch (opcao)
             {
+                case 0:
+                    break;
                 case 1:
                     Ex01();
                     break;
@@ -57,6 +54,40 @@ namespace Ex
                 case 9:
                     Ex09();
                     break;
+                case 10:
+                    Ex10();
+                    break;
+                case 11:
+                    Ex11();
+                    break;
+                case 12:
+                    Ex12();
+                    break;
+                case 13:
+                    Ex13();
+                    break;
+                case 14:
+                    Ex14();
+                    break;
+                case 15:
+                    Ex15();
+                    break;
+                case 16:
+                    Ex16();
+                    break;
+                case 17:
+                    Ex17();
+                    break;
+                case 18:
+                    Ex18();
+                    break;
+                case 19:
+                    Ex19();
+                    break;
+                case 20:
+                    Ex20();
+                    break;
+
                 default:
                     Menu();
                     break;
@@ -67,6 +98,7 @@ namespace Ex
         {
             //1) Escreva um programa que mostre na tela a mensagem "Olá, Mundo!"
             Console.WriteLine("Helo Word!");
+            Menu();
         }
         public static void Ex02()
         {
@@ -79,6 +111,7 @@ namespace Ex
             string name = Console.ReadLine();
 
             Console.WriteLine($"Ola {name}, é um prazer te conhecer!");
+            Menu();
         }
 
         public static void Ex03()
@@ -98,6 +131,7 @@ namespace Ex
             salario = double.Parse(Console.ReadLine());
 
             Console.WriteLine($"O funcionário {name} tem um salário de R$ {salario:F2}");
+            Menu();
         }
 
         public static void Ex04()
@@ -118,6 +152,7 @@ namespace Ex
             int soma = numero1 + numero2;
 
             Console.WriteLine($"Sua soma e {soma}");
+            Menu();
         }
         public static void Ex05()
         {
@@ -135,7 +170,7 @@ namespace Ex
             media = (nota1 + nota2) / 2;
 
             Console.WriteLine($"A média entre {nota1} e {nota2} é igual a {media}");
-
+            Menu();
         }
 
         public static void Ex06()
@@ -152,6 +187,7 @@ namespace Ex
             numero = int.Parse(Console.ReadLine());
 
             Console.WriteLine($"Seu numro e {numero} seu antecessor e {numero - 1} seu sucesor e {numero + 1}");
+            Menu();
 
         }
         public static void Ex07()
@@ -171,6 +207,7 @@ namespace Ex
             tripulo = dobro / 3;
 
             Console.WriteLine($"Seu numero e {nota} seu dobro e {dobro} seu tripulo e {tripulo}");
+            Menu();
         }
 
         public static void Ex08()
@@ -206,6 +243,7 @@ namespace Ex
             Console.WriteLine($"{dm} dm");
             Console.WriteLine($"{cm} cm");
             Console.WriteLine($"{mm} mm");
+            Menu();
         }
         public static void Ex09()
         {
@@ -216,10 +254,102 @@ namespace Ex
 
             Console.WriteLine("Qual e seu valor da carteira");
             carteira = float.Parse(Console.ReadLine());
-            
-            soma = carteira * 1.00F;
+
+            soma = carteira * 5.47f;
 
             Console.WriteLine(soma);
+            Menu();
+        }
+        public static void Ex10()
+        {
+            // 10) Faça um algoritmo que leia a largura e altura de uma parede, calcule e 
+            // mostre a área a ser pintada e a quantidade de tinta necessária para o serviço, 
+            // sabendo que cada litro de tinta pinta uma área de 2metros quadrados.
+            decimal largura, altura, tinta;
+
+            Console.WriteLine("Iremos calcular area pintada insira o valor da lagura e altura");
+            largura = decimal.Parse(Console.ReadLine());
+            altura = decimal.Parse(Console.ReadLine());
+
+            tinta = (largura * altura) / 2;
+
+            Console.WriteLine($"Litros gasto sera {tinta}");
+
+            Menu();
+        }
+        public static void Ex11()
+        {
+            // 11) Desenvolva uma lógica que leia os valores de A, B e C de uma equação do 
+            // segundo grau e mostre o valor de Delta. REVER COMO SE FAZ MATEMATICA
+            double a, b, c, r;
+
+            Console.WriteLine("Digite 3 numeos que sera os A B C para calular o delta");
+            a = double.Parse(Console.ReadLine());
+            b = double.Parse(Console.ReadLine());
+            c = double.Parse(Console.ReadLine());
+
+            r = Math.Pow(b, 2) - 4 * (a * c);
+            Console.WriteLine(r);
+
+            Menu();
+        }
+        public static void Ex12()
+        {
+            // 12) Crie um programa que leia o preço de um produto, calcule e mostre o seu 
+            // PREÇO PROMOCIONAL, com 5% de desconto.
+            double desconto, valor, total;
+
+            Console.WriteLine("Qual e seu valor e desconto oferecido");
+            valor = double.Parse(Console.ReadLine());
+            desconto = double.Parse(Console.ReadLine());
+
+            total = valor * (desconto / 100);
+            valor = valor - total; // pratica q nao deveria ser feita pois esta esta atribuido um novo valor na variavel que possa usanda no futuro.
+
+            Console.WriteLine($"Valor final da compra sera R$ {valor:F2}");
+            Menu();
+        }
+        public static void Ex13()
+        {
+            // 13) Faça um algoritmo que leia o salário de um funcionário, calcule e mostre o 
+            // seu novo salário, com 15% de aumento.
+
+            decimal salario, aumento, total;
+
+            Console.WriteLine("Qual e seu valor e aumento em % oferecido");
+            salario = decimal.Parse(Console.ReadLine());
+            aumento = decimal.Parse(Console.ReadLine());
+
+            total = salario + (aumento * salario);
+
+            Console.WriteLine($"Valor final sera R$ {total:F2}");
+            Menu();
+        }
+        public static void Ex14()
+        {
+            // 14) A locadora de carros precisa da sua ajuda para cobrar seus serviços. Escreva 
+            // um programa que pergunte a quantidade de Km percorridos por um carro alugado e a 
+            // quantidade de dias pelos quais ele foi alugado. Calcule o preço total a pagar, 
+            // sabendo que o carro custa R$90 por dia e R$0,20 por Km rodado
+            
+        }
+        public static void Ex15()
+        {
+        }
+        public static void Ex16()
+        {
+        }
+        public static void Ex17()
+        {
+        }
+        public static void Ex18()
+        {
+        }
+        public static void Ex19()
+        {
+        }
+        public static void Ex20()
+        {
         }
     }
 }
