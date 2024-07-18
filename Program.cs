@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.IO.Pipes;
 using System.Reflection;
 using System.Security.AccessControl;
 using Newtonsoft.Json; //dotnet add package Newtonsoft.Json --version 13.0.3
@@ -331,13 +332,59 @@ namespace Ex
             // um programa que pergunte a quantidade de Km percorridos por um carro alugado e a 
             // quantidade de dias pelos quais ele foi alugado. Calcule o preço total a pagar, 
             // sabendo que o carro custa R$90 por dia e R$0,20 por Km rodado
-            
+
+            float km, total;
+            int dia;
+
+            Console.WriteLine("Quantos quilometros pecorrido?");
+            km = float.Parse(Console.ReadLine());
+            Console.WriteLine("Quantos dias?");
+            dia = int.Parse(Console.ReadLine());
+
+            km = km * 0.20f;
+            dia = dia * 90;
+            total = km + dia;
+
+            Console.WriteLine($"Total a pagar R$ {total}");
+
+            Menu();
         }
         public static void Ex15()
         {
+            // 15) Crie um programa que leia o número de dias trabalhados em um mês e mostre o 
+            // salário de um funcionário, sabendo que ele trabalha 8 horas por dia e ganha R$25 
+            // por hora trabalhada.
+            int salario, horas = 25, dia;
+
+            Console.WriteLine("Quantos dias trabalhando");
+            dia = int.Parse(Console.ReadLine());
+
+            salario = dia * horas;
+
+            Console.WriteLine($"Seu seu salrio sera {salario}");
+            Menu();
         }
         public static void Ex16()
         {
+            // 16) [DESAFIO] Escreva um programa para calcular a redução do tempo de vida de um 
+            // fumante. Pergunte a quantidade de cigarros fumados por dias e quantos anos ele 
+            // já fumou. Considere que um fumante perde 10 min de vida a cada cigarro. Calcule 
+            // quantos dias de vida um fumante perderá e exiba o total em dias.
+            int fumados, quantosAnosFumados;
+            float anos, dias;
+
+            Console.WriteLine("Quantos cigarro vc fumar por dia");
+            fumados = int.Parse(Console.ReadLine());
+            Console.WriteLine("Quantos anos fuma");
+            quantosAnosFumados = int.Parse(Console.ReadLine());
+            
+            dias = (quantosAnosFumados * 365) * (fumados * 10); // FIZ A MUTIPLI DO ANOS EM DIAS DEPOIS PEGUEI OS FUMADOS QUE SERIA POR DIA E DEPOIS E MULTIPLICA TUDO
+            anos = dias / (60 * 24); // ESSA PARTE E 60 QUE SERIA EM HORAS X TOTAL DO DIA =
+
+            Console.WriteLine($"{anos:F2}");
+            
+            Menu();
+
         }
         public static void Ex17()
         {
